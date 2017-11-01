@@ -20,7 +20,7 @@ RUN apt-get update && \
     liblmdb-dev
 
 # install tensorflow, keras and other dependencies
-RUN pip install \
+RUN pip install --upgrade pip \
     numpy \
     scipy \
     pandas \
@@ -33,7 +33,7 @@ RUN pip install \
 WORKDIR /root
 
 # install caffe
-RUN git clone --branch rc5 https://github.com/BVLC/caffe.git && \
+RUN git clone https://github.com/BVLC/caffe.git && \
     cd caffe && \
     cat python/requirements.txt | xargs -n1 pip install && \
     mkdir build && \
@@ -49,7 +49,7 @@ RUN cd && \
     wget https://github.com/oxygine/oxygine-framework/raw/master/3rdPartyTools/linux/PVRTexToolCLI && \
     chmod +x ~/PVRTexToolCLI
 
-# clone git repo bengler propinquity
-RUN git clone https://github.com/bengler/propinquity.git
+# clone git repo Ambrosiani propinquity
+RUN git clone https://github.com/Ambrosiani/propinquity.git
 
 RUN ["/bin/bash"]
